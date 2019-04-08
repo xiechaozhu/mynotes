@@ -1,0 +1,1 @@
+在通过ribbon或者feign调用erueka-client时如果某个client故障，则熔断器产生作用

@@ -1,0 +1,8 @@
+EINTR
+　　linux中函数的返回状态，在不同的函数中意义不同：
+1）write
+　　表示：由于信号中断，没写成功任何数据。
+　　The call was interrupted by a signal before any data was written.
+2）read
+　　表示：由于信号中断，没读到任何数据。
+　　The call was interrupted by a signal before any data was read.

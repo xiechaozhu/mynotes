@@ -1,0 +1,7 @@
+1解压
+2配置bin到环境变量
+3复制my-default.ini为my。ini
+4配置basedir=根目录 datadir=根目录下的data port=3306
+5管理员权限打开cmd进入bi目录，mysqld-install
+6启动服务net start mysql
+7配置密码mysqladmin -u root -p password

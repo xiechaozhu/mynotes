@@ -1,0 +1,12 @@
+new string（“a”）首先会查看常量池中有没有“a” 如果没有他会在常量池中创建“a”，然后再堆中再创建一个“a”
+
+
+String s1="sd";
+String s2="sdf";
+
+String s3="ad"+"sdf";  s3实在编译期就确定的对像，在常量池中
+String s4=s1+s2  //s4是在堆中创建的对象
+String s5="adsdf";
+
+s3==s5  true
+s4==s5  flase

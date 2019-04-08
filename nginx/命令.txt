@@ -1,0 +1,9 @@
+启动命令：切换到/usr/local/nginx/sbin目录使用./nginx启动
+
+停止命令：切换到/usr/local/nginx/sbin目录使用./nginx -s stop停止
+
+验证配置文件是否合法：切换到/usr/local/nginx/sbin目录使用./nginx -t
+
+
+
+重新加载配置文件：切换到/usr/local/nginx/sbin目录使用./nginx -s reload

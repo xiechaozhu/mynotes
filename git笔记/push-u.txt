@@ -1,0 +1,1 @@
+加了参数-u后，以后即可直接用git push 代替git push origin master

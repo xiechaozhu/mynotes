@@ -1,0 +1,9 @@
+git checkout dev 切换到dev分支
+
+合并起来就是 git checkout -b dev   创建并切换到dev分支
+
+git push origin config-label-v2.0:config-label-v2.0   config-label-v2.0这个是本地分支仓库，
+
+冒号前面的是本地的分支，后面的是远程的分支，远程的分支可以不用存在，使用这个命令，可以直接创建远程的分支仓库，
+
+并将本地分支仓库中的文件推送过去。

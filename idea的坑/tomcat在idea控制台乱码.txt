@@ -1,0 +1,3 @@
+在idea   bin目录下的idea。exe。vmoptions最后加上
+
+-Dfile.encoding=UTF-8

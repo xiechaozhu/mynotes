@@ -1,0 +1,49 @@
+1安装make    yum -y install gcc automake autoconf libtool make
+2安装g++   yum install gcc gcc-c++
+
+1.选定源码目录   cd /usr/local/src
+
+2.安装PCRE库   cd /usr/local/src
+wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.gz 
+tar -zxvf pcre-8.37.tar.gz
+cd pcre-8.34
+./configure
+make
+make install
+
+
+
+3.安装zlib库
+cd /usr/local/src
+
+wget http://zlib.net/zlib-1.2.11.tar.gz
+tar -zxvf zlib-1.2.11.tar.gz
+cd zlib-1.2.8
+./configure
+make
+make install
+
+cd /usr/local/src
+
+4.安装ssl（某些vps默认没装ssl)
+cd /usr/local/src
+wget https://www.openssl.org/source/openssl-1.0.1t.tar.gz
+tar -zxvf openssl-1.0.1t.tar.gz
+
+5.安装nginx
+cd /usr/local/src
+wget http://nginx.org/download/nginx-1.4.2.tar.gz
+tar -zxvf nginx-1.4.2.tar.gz
+cd nginx-1.4.2
+ 
+./configure --sbin-path=/usr/local/nginx/nginx \
+--conf-path=/usr/local/nginx/nginx.conf \
+--pid-path=/usr/local/nginx/nginx.pid \
+--with-http_ssl_module \
+--with-pcre=/usr/local/src/pcre-8.42 \
+--with-zlib=/usr/local/src/zlib-1.2.11 \
+--with-openssl=/usr/local/src/openssl-1.0.1t
+ 
+make
+make install
+

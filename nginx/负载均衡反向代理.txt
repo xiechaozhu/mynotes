@@ -1,0 +1,13 @@
+
+upstream tcsv {
+      server 10.10.10.130:8080;
+      server 10.10.10.131:8080;  //这里是负载均衡   如何是一个就只是反向代理
+                }
+
+server {
+        listen 80;
+        server_name www.ready.com;
+        location  / {
+                proxy_pass http://tcsv;
+                }
+        }

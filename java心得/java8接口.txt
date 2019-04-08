@@ -1,0 +1,5 @@
+default方法存在是为了兼容以前的版本
+
+比如以前在java7实现了一个list接口
+java8在list接口中添加了方法，这个时候如果不用default就得重新编译
+而使用default就可以不用管了

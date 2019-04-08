@@ -1,0 +1,14 @@
+1、现在github。com上建立仓库，一般设置为public
+
+2、在本地某个文件夹使用git init命令将当前文件夹初始化为本地git仓库
+
+3、然后使用git add 文件名 。。。。  将本地文件加入到暂存区
+
+4、然后git commit -m “信息”   将暂存区中的文件加入到 本地仓库
+
+5、关联远程仓库 git remote add origin https://github。com/xxx
+
+6、git push -u origin master   推送到远程仓库
+
+
+

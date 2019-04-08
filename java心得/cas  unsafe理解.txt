@@ -1,0 +1,34 @@
+用CAS操作实现安全的自增
+AtomicInteger中有很多方法，例如incrementAndGet() 相当于i++ 和getAndAdd() 相当于i+=n 。
+从源码中我们可以看出这几种方法的实现很相似，所以我们主要分析incrementAndGet() 方法的源码。
+
+源码如下：
+
+ public final int incrementAndGet() {
+        for (;;) {
+            int current = get();
+            int next = current + 1;
+            if (compareAndSet(current, next))
+                return next;
+        }
+    }
+
+ public final boolean compareAndSet(int expect, int update) {
+    return unsafe.compareAndSwapInt(this, valueOffset, expect, update);
+    }
+incrementAndGet() 方法实现了自增的操作。核心实现是先获取当前值和目标值（也就是value+1），
+如果compareAndSet(current, next) 返回成功则该方法返回目标值。那么compareAndSet是做什么的呢？理解这个方法我们需要引入CAS操作。
+在大学操作系统课程中我们学过独占锁和乐观锁的概念。独占锁就是线程获取锁后其他的线程都需要挂起，直到持有独占锁的线程释放锁；
+乐观锁是先假定没有冲突直接进行操作，如果因为有冲突而失败就重试，直到操作成功。其中乐观锁用到的机制就是CAS，Compare and Swap。
+
+AtomicInteger 中的CAS操作就是compareAndSet()，其作用是每次从内存中根据内存偏移量（valueOffset）取出数据，将取出的值跟expect 比较，
+如果数据一致就把内存中的值改为update。
+
+这样使用CAS就保证了原子操作。其余几个方法的原理跟这个相同，在此不再过多的解释。
+
+没看AtomicInteger 源码之前，我认为其内部是用synchronized 来实现的原子操作。查阅资料后发现synchronized 会影响性能，
+因为Java中的synchronized 锁是独占锁，虽然可以实现原子操作，但是这种实现方式的并发性能很差。
+
+总结
+总结一下，AtomicInteger 中主要实现了整型的原子操作，防止并发情况下出现异常结果，其内部主要依靠JDK 中的unsafe 类操作内存中的数据来实现的。
+volatile 修饰符保证了value在内存中其他线程可以看到其值得改变。CAS操作保证了AtomicInteger 可以安全的修改value 的值。

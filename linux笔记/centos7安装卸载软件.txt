@@ -1,0 +1,3 @@
+获得软件包的信息； q表示查询query，a 表示all，在所有包中执行查询列出所有被安装的rpm package ：# rpm -qa< rpm package name>
+
+rpm -e --nodeps <package name>

@@ -1,0 +1,31 @@
+区别1
+ 
+
+where是判断数据从磁盘读入内存的时候
+
+ 
+
+having是判断分组统计之前的所有条件
+
+
+区别2
+ 
+
+having子句中可以使用字段别名，而where不能使用
+
+
+区别3
+ 
+
+having能够使用统计函数，但是where不能使用
+
+
+where和having都可以使用的场景：
+    select price,name from goods where price > 100
+    select price,name from goods having price > 100
+说明：having可用的前提是已经筛选出了price字段，在这种情况下和where的效果是等效的，
+But如果没有select price 就会报错！！因为having是从前筛选的字段再筛选，而where是从数据表中的字段直接进行的筛选的。
+
+只可以用where，不可以用having的情况
+    select name from goods where price> 100
+    select name from goods having price> 100 //报错！！！因为select没有筛选出price 字段，having不能用,而where是对表进行检索price。100
