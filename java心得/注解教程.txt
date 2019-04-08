@@ -1,0 +1,29 @@
+让我们先看一下实现注解三要素：
+
+1，注解声明、
+
+2，使用注解的元素、
+
+3，操作注解使其起作用(注解处理器)
+
+
+@Target
+
+Target说明的是Annotation所修饰的对象范围
+
+@Retention
+
+定义了该Annotation被保留的时间长短：某些Annotation仅出现在源代码中，而被编译器丢弃；
+而另一些却被编译在class文件中；
+编译在class文件中的Annotation可能会被虚拟机忽略，而另一些在class被装载时将被读取
+（请注意并不影响class的执行，因为Annotation与class在使用上是被分离的）。
+使用这个元注解可以对 Annotation的“生命周期”限制
+
+
+@Inherited
+
+@Inherited 元注解是一个标记注解，@Inherited阐述了某个被标注的类型是被继承的。
+如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类
+这里做个解释：类A用被注解@xxx修饰了，这个注解中有@Inherited注解，此时类B继承类A这时类B也等于有了注解@xxx.
+
+
