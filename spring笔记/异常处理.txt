@@ -1,0 +1,12 @@
+@ControllerAdvice
+public class EHandler {
+    //这里responsestatus和exceptionhandler配合意思是认证错误也返回200 这里200是http消息
+    //响应头，并不是html内容
+    @ResponseStatus(value = HttpStatus.OK)
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public String handleException(Exception ex) {
+        ex.printStackTrace();
+        return "cuoleaaaa";
+    }
+}
